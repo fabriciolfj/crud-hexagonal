@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.crudperson.core.ports.out.dto;
+package com.github.fabriciolfj.crudperson.core.ports.in.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

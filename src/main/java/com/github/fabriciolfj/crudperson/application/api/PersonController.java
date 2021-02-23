@@ -1,6 +1,6 @@
 package com.github.fabriciolfj.crudperson.application.api;
 
-import com.github.fabriciolfj.crudperson.core.ports.out.dto.PersonResponse;
+import com.github.fabriciolfj.crudperson.core.ports.in.dto.PersonResponse;
 import com.github.fabriciolfj.crudperson.core.ports.in.dto.PersonRequest;
 import com.github.fabriciolfj.crudperson.core.ports.in.PersonCrudIn;
 import lombok.RequiredArgsConstructor;

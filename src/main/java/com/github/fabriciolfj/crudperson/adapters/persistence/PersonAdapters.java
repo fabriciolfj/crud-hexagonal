@@ -3,8 +3,9 @@ package com.github.fabriciolfj.crudperson.adapters.persistence;
 import com.github.fabriciolfj.crudperson.adapters.persistence.mapper.PersonEntityMapper;
 import com.github.fabriciolfj.crudperson.adapters.persistence.repository.PersonRepository;
 import com.github.fabriciolfj.crudperson.core.personcrud.domain.Person;
-import com.github.fabriciolfj.crudperson.core.ports.out.dto.PersonResponse;
 import com.github.fabriciolfj.crudperson.core.ports.out.PersonCrudOut;
+import com.github.fabriciolfj.crudperson.core.ports.out.dto.PersonEntityResponse;
+import com.github.fabriciolfj.crudperson.core.ports.out.mappers.PersonEntityResponseMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class PersonAdapters implements PersonCrudOut {
 
     private final PersonEntityMapper mapper;
+    private final PersonEntityResponseMapper mapperResponse;
     private final PersonRepository repository;
     private static final String MSG = "Person not found. Id: ";
 
@@ -26,17 +28,17 @@ public class PersonAdapters implements PersonCrudOut {
     }
 
     @Override
-    public List<PersonResponse> findAll() {
+    public List<PersonEntityResponse> findAll() {
         return repository.findAll()
                 .stream()
-                .map(mapper::toRequest)
+                .map(mapperResponse::toResponseEntity)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public PersonResponse findById(Long id) {
+    public PersonEntityResponse findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toRequest)
+                .map(mapperResponse::toResponseEntity)
                 .orElseThrow(() -> new RuntimeException(MSG + id));
     }
 

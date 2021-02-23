@@ -1,7 +1,7 @@
 package com.github.fabriciolfj.crudperson.core.ports.in;
 
 import com.github.fabriciolfj.crudperson.core.ports.in.dto.PersonRequest;
-import com.github.fabriciolfj.crudperson.core.ports.out.dto.PersonResponse;
+import com.github.fabriciolfj.crudperson.core.ports.in.dto.PersonResponse;
 
 import java.util.List;
 

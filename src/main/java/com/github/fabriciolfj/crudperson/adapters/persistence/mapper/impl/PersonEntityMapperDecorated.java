@@ -3,7 +3,7 @@ package com.github.fabriciolfj.crudperson.adapters.persistence.mapper.impl;
 import com.github.fabriciolfj.crudperson.adapters.persistence.entity.PersonEntity;
 import com.github.fabriciolfj.crudperson.adapters.persistence.mapper.PersonEntityMapper;
 import com.github.fabriciolfj.crudperson.core.personcrud.domain.Person;
-import com.github.fabriciolfj.crudperson.core.ports.out.dto.PersonResponse;
+import com.github.fabriciolfj.crudperson.core.ports.in.dto.PersonResponse;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
