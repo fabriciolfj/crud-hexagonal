@@ -1,12 +1,12 @@
 package com.github.fabriciolfj.crudperson.core.documentprocess;
 
-import com.github.fabriciolfj.crudperson.core.ports.in.DocumentValidate;
+import com.github.fabriciolfj.crudperson.core.ports.in.DocumentIn;
 import org.springframework.stereotype.Service;
 
 import java.util.InputMismatchException;
 
 @Service
-public class DocumentService implements DocumentValidate {
+public class DocumentService implements DocumentIn {
 
     @Override
     public boolean isCpf(final String cpf) {

@@ -3,7 +3,7 @@ spring:
     locations:
       - classpath:db/migration
   datasource:
-    url: jdbc:mysql://localhost:/crud?createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/crud?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
     password: root
   jpa:

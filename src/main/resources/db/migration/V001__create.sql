@@ -1,4 +1,4 @@
-create  is table person(
+create table person(
 id bigint not null auto_increment,
 name varchar(255) not null,
 document varchar(15) not null,

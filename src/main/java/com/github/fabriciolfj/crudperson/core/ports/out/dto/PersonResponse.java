@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.crudperson.core.personcrud.dto;
+package com.github.fabriciolfj.crudperson.core.ports.out.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PersonRequest {
+public class PersonResponse {
 
     private String name;
+    private String type;
     private String document;
 }
