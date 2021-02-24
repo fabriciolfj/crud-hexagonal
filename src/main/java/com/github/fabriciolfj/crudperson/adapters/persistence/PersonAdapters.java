@@ -2,6 +2,7 @@ package com.github.fabriciolfj.crudperson.adapters.persistence;
 
 import com.github.fabriciolfj.crudperson.adapters.persistence.mapper.PersonEntityMapper;
 import com.github.fabriciolfj.crudperson.adapters.persistence.repository.PersonRepository;
+import com.github.fabriciolfj.crudperson.application.exception.PersonNotFoundException;
 import com.github.fabriciolfj.crudperson.core.personcrud.domain.Person;
 import com.github.fabriciolfj.crudperson.core.ports.out.PersonCrudOut;
 import com.github.fabriciolfj.crudperson.core.ports.out.dto.PersonEntityResponse;
@@ -39,7 +40,7 @@ public class PersonAdapters implements PersonCrudOut {
     public PersonEntityResponse findById(Long id) {
         return repository.findById(id)
                 .map(mapperResponse::toResponseEntity)
-                .orElseThrow(() -> new RuntimeException(MSG + id));
+                .orElseThrow(() -> new PersonNotFoundException(MSG + id));
     }
 
     @Override
@@ -57,6 +58,6 @@ public class PersonAdapters implements PersonCrudOut {
                 .map(entity -> {
                     BeanUtils.copyProperties(person, entity, "id");
                     return repository.save(entity);
-                }).orElseThrow(() -> new RuntimeException(MSG + id));
+                }).orElseThrow(() -> new PersonNotFoundException(MSG + id));
     }
 }

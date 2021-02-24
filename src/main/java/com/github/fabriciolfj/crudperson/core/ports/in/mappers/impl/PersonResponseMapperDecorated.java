@@ -1,7 +1,7 @@
-package com.github.fabriciolfj.crudperson.core.ports.out.mappers.impl;
+package com.github.fabriciolfj.crudperson.core.ports.in.mappers.impl;
 
-import com.github.fabriciolfj.crudperson.core.ports.out.dto.PersonResponse;
-import com.github.fabriciolfj.crudperson.core.ports.out.mappers.PersonResponseMapper;
+import com.github.fabriciolfj.crudperson.core.ports.in.dto.PersonResponse;
+import com.github.fabriciolfj.crudperson.core.ports.in.mappers.PersonResponseMapper;
 import com.github.fabriciolfj.crudperson.core.personcrud.domain.Person;
 import lombok.NoArgsConstructor;
 
