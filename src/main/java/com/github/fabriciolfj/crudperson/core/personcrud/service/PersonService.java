@@ -1,6 +1,7 @@
 package com.github.fabriciolfj.crudperson.core.personcrud.service;
 
 import com.github.fabriciolfj.crudperson.core.personcrud.facade.PersonCreate;
+import com.github.fabriciolfj.crudperson.core.ports.in.DocumentIn;
 import com.github.fabriciolfj.crudperson.core.ports.in.dto.PersonRequest;
 import com.github.fabriciolfj.crudperson.core.ports.in.dto.PersonResponse;
 import com.github.fabriciolfj.crudperson.core.ports.in.mappers.PersonResponseMapper;
@@ -16,16 +17,21 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PersonService implements PersonCrudIn {
 
-    private final PersonCreate personCreate;
+    private final List<PersonCreate> personCreate;
     private final PersonCrudOut personCrudOut;
     private final PersonResponseMapper personResponseMapper;
+    private final DocumentIn documentIn;
 
     @Override
     public PersonResponse save(final PersonRequest personRequest) {
-        return personCreate.execute(personRequest)
-                .map(p -> {
-                    personCrudOut.save(p);
-                    return personResponseMapper.toResponse(p);
+        return personCreate
+                .stream()
+                .filter(p -> p.isValid(documentIn, personRequest.getDocument()))
+                .findAny()
+                .flatMap(p -> p.execute(personRequest))
+                .map(person -> {
+                    personCrudOut.save(person);
+                    return personResponseMapper.toResponse(person);
                 })
                 .orElseThrow(() -> new RuntimeException("Document invalid: " + personRequest.getDocument()));
     }
@@ -51,7 +57,11 @@ public class PersonService implements PersonCrudIn {
 
     @Override
     public void update(final Long id, final PersonRequest request) {
-        personCreate.execute(request)
+        personCreate
+                .stream()
+                .filter(p -> p.isValid(documentIn, request.getDocument()))
+                .findFirst()
+                .flatMap(p -> p.execute(request))
                 .map(p -> {
                     personCrudOut.update(id, p);
                     return p;
