@@ -1,1 +1,1 @@
-# crud-hexagonal
+# Examplo crud utilizando arquitetura clean.
