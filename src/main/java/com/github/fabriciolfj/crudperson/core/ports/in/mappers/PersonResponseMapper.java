@@ -14,8 +14,5 @@ public interface PersonResponseMapper {
 
     PersonResponse toResponse(final Person person);
 
-    @Mapping(target = "name", source = "name")
-    @Mapping(target = "document", source = "document")
-    @Mapping(target = "type", source = "type")
     PersonResponse toResponse(final PersonEntityResponse entityResponse);
 }

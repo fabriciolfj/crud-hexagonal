@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-crud
+data:
+  application.yml: |-
+    spring:
+      flyway:
+        locations:
+          - classpath:db/migration
+      datasource:
+        url: jdbc:mysql://192.168.32.1:3306/crud?createDatabaseIfNotExist=true&serverTimezone=UTC
+        username: root
+        password: root
+      jpa:
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL57Dialect
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: "*"
+      metrics:
+        export:
+          prometheus:
+            enabled: true
+      endpoint:
+        metrics:
+          enabled: false
+        prometheus:
+          enabled: true
+

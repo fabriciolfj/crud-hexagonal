@@ -3,10 +3,10 @@ package com.github.fabriciolfj.crudperson;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class CrudPersonApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 
